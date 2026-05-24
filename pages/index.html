@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHER — Игровая Студия</title>
+</head>
+<body>
+  <!-- Three.js Background -->
+  <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html" class="header__logo">AETHER</a>
+      
+      <nav class="header__nav">
+        <a href="index.html" class="header__link active">Главная</a>
+        <a href="games.html" class="header__link">Игры</a>
+        <a href="about.html" class="header__link">О студии</a>
+      </nav>
+
+      <button class="header__btn btn btn--primary">Связаться</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__content">
+        <div class="hero__badge">Независимая студия • С 2023</div>
+        
+        <h1 class="hero__title">
+          Мы создаём миры,<br>
+          в которые хочется вернуться
+        </h1>
+        
+        <p class="hero__subtitle">
+          AETHER — небольшая команда, которая делает атмосферные, 
+          честные и визуально впечатляющие игры.
+        </p>
+
+        <div class="hero__actions">
+          <a href="/pages/games.html" class="btn btn--primary">Исследовать игры</a>
+          <a href="#" class="btn btn--secondary">Смотреть трейлер</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__number">12</span>
+            <span class="stat__label">Выпущенных игр</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">4.8M</span>
+            <span class="stat__label">Игроков по всему миру</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">19</span>
+            <span class="stat__label">Наград и номинаций</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
