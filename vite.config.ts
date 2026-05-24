@@ -9,9 +9,9 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             input: {
-                'pages/index': './pages/index.html',
-                'pages/games': './pages/games.html',
-                'pages/about': './pages/about.html',
+                main: './index.html',
+                games: './pages/games.html',
+                about: './pages/about.html',
             },
         },
     },
