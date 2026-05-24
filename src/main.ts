@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { gsap } from 'gsap';
-import '../src/style.scss';
+import './style.scss';
 
 const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
 const scene = new THREE.Scene();

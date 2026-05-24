@@ -106,6 +106,7 @@ body {
 
   &__container {
     max-width: 1280px;
+    margin: 0 auto;
     padding: spacing(1.25) spacing(2.5);
     display: flex;
     align-items: center;
@@ -162,6 +163,108 @@ body {
     &:hover::after,
     &.active::after {
       width: 100%;
+    }
+  }
+
+  &__burger {
+    display: none;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease;
+
+    @media (prefers-color-scheme: dark) {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    &:hover{
+      border-color: var(--accent);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+  }
+}
+
+.burger-icon{
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+}
+
+.burger-line{
+  fill: none;
+  stroke: var(--text-h);
+  stroke-width: 2;
+  stroke-linecap:butt;
+  transition: transform 0.3s ease, opacity 0.2s ease, stroke 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  padding: 96px 20px 24px;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.mobile-nav__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.mobile-nav__link {
+  display: block;
+  padding: 16px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+}
+
+.mobile-nav__btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+body.menu-open .burger-line--top {
+  transform: translateX(-4px) translateY(6px) rotate(45deg);
+}
+
+body.menu-open .burger-line--middle {
+  opacity: 0;
+}
+
+body.menu-open .burger-line--bottom {
+  transform: translateX(-4px) translateY(-3px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__nav,
+    &__btn {
+      display: none;
+    }
+
+    &__burger {
+      display: inline-flex;
     }
   }
 }
