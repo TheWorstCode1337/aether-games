@@ -323,19 +323,6 @@ body.menu-open .burger-line--bottom {
   }
 }
 
-.hero__title {
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -40px;
-    background: radial-gradient(rgba(170, 59, 255, 0.22), transparent 70%);
-    filter: blur(90px);
-    z-index: -1;
-  }
-}
-
 // ==================== BUTTONS ====================
 .btn {
   @include btn-base;
