@@ -53,14 +53,6 @@ scene.add(particles);
 scene.fog = new THREE.FogExp2(0x0f0b1a, 0.019);
 renderer.setClearColor(0x000, 0);
 
-let mouseX = 0;
-let mouseY = 0;
-
-window.addEventListener('mousemove', (e) => {
-  mouseX = (e.clientX / innerWidth - 0.5) * 2;
-  mouseY = (e.clientY / innerHeight - 0.5) * 2;
-});
-
 let isVisible = true;
 document.addEventListener('visibilitychange', () => {
   isVisible = !document.hidden;
@@ -72,8 +64,6 @@ const animation = () => {
 
   particles.rotation.y += 0.00015;
   particles.rotation.x += 0.00008;
-  camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
-  camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
   camera.lookAt(scene.position);
   renderer.render(scene, camera);
 }
