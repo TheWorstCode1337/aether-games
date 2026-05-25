@@ -19,7 +19,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const isMobile = window.innerWidth < 768;
-const particlesCount = isMobile ? 1400 : 3500;
+const particlesCount = isMobile ? 1900 : 3500;
 const positions = new Float32Array(particlesCount * 3);
 const colors = new Float32Array(particlesCount * 3);
 for (let i = 0; i < particlesCount * 3; i += 3) {
@@ -61,7 +61,6 @@ document.addEventListener('visibilitychange', () => {
 const animation = () => {
   requestAnimationFrame(animation);
   if (!isVisible) return;
-
   particles.rotation.y += 0.00015;
   particles.rotation.x += 0.00008;
   camera.lookAt(scene.position);
@@ -80,9 +79,37 @@ resize();
 window.addEventListener('resize', resize);
 
 window.addEventListener('DOMContentLoaded', () => {
-  gsap.from(".hero__badge", { y: 40, opacity: 0, duration: 1, delay: 0.4, ease: "power3.out" });
-  gsap.from(".hero__title", { y: 80, opacity: 0, duration: 1.4, delay: 0.7, ease: "power4.out" });
-  gsap.from(".hero__subtitle", { y: 50, opacity: 0, duration: 1.2, delay: 1.1 });
-  gsap.from(".hero__actions", { y: 60, opacity: 0, duration: 1.1, delay: 1.4 });
-  gsap.from(".hero__stats", { y: 40, opacity: 0, duration: 1, delay: 1.7 });
+  const tl = gsap.timeline();
+  tl.from(".hero__badge", {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    delay: 0.4,
+    ease: "power3.out"
+  })
+    .from(".hero__title", {
+      y: 80,
+      opacity: 0,
+      duration: 1.2,
+      delay: 0.2,
+      ease: "power4.out"
+    }, "-=0.5")
+    .from(".hero__subtitle", {
+      y: 40,
+      opacity: 0,
+      delay: 0.2,
+      duration: 1,
+    }, "-=0.7")
+    .from(".hero__actions", {
+      y: 30,
+      opacity: 0,
+      delay: 0.2,
+      duration: 0.9,
+    }, "-=0.6")
+    .from(".hero__stats", {
+      y: 30,
+      opacity: 0,
+      delay: 0.2,
+      duration: 0.9,
+    }, "-=0.5");
 });

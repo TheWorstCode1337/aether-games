@@ -49,7 +49,7 @@
 // ==================== MIXINS ====================
 @mixin glass-effect {
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(4px);
   border-bottom: 1px solid var(--border);
 
   @media (prefers-color-scheme: dark) {
@@ -182,7 +182,7 @@ body {
       background: rgba(255, 255, 255, 0.04);
     }
 
-    &:hover{
+    &:hover {
       border-color: var(--accent);
     }
 
@@ -193,18 +193,21 @@ body {
   }
 }
 
-.burger-icon{
+.burger-icon {
   width: 22px;
   height: 22px;
   overflow: visible;
 }
 
-.burger-line{
+.burger-line {
   fill: none;
   stroke: var(--text-h);
   stroke-width: 2;
-  stroke-linecap:butt;
-  transition: transform 0.3s ease, opacity 0.2s ease, stroke 0.3s ease;
+  stroke-linecap: butt;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    stroke 0.3s ease;
   transform-origin: center;
 }
 
@@ -317,6 +320,19 @@ body.menu-open .burger-line--bottom {
     gap: spacing(1.5);
     justify-content: center;
     flex-wrap: wrap;
+  }
+}
+
+.hero__title {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(rgba(170, 59, 255, 0.22), transparent 70%);
+    filter: blur(90px);
+    z-index: -1;
   }
 }
 
