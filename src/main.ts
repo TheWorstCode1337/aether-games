@@ -1,13 +1,15 @@
-import './style.scss';
+import '../scss/style.scss';
 
 import { animateMain } from './animationMain';
 import { createScene } from './scene/setupScene';
 import { createParticles } from './scene/particles';
 import { startAnimation } from './scene/animation';
 import { setupResize } from './resize';
+import './startComponents';
 
-const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement | null;
-if (!canvas) throw new Error('Canvas not found');
+
+const canvas = document.querySelector<HTMLCanvasElement>('#bg-canvas');
+if (!(canvas instanceof HTMLCanvasElement)) throw new Error('Canvas not found');
 
 const {
   scene,

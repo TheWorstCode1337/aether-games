@@ -1,0 +1,32 @@
+@use "sass:color";
+@use "./func" as *;
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--border);
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(22, 23, 29, 0.85);
+  }
+}
+
+@mixin btn-base {
+  padding: spacing(0.875) spacing(2);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@mixin gradient-text {
+  background: linear-gradient(90deg, var(--accent), #{color.adjust(#c084fc, $lightness: 15%)});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

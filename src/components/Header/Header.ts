@@ -1,5 +1,6 @@
-const HeaderHTML = () => {
-    return `
+export const Header = () => {
+  return `
+    <header class="header">
     <div class="header__container">
       <a href="index.html" class="header__logo">AETHER</a>
       
@@ -19,7 +20,15 @@ const HeaderHTML = () => {
 
       <button class="header__btn btn btn--primary">Связаться</button>
     </div>
+  </header>
+
+    <div class="mobile-nav" hidden>
+    <nav class="mobile-nav__menu" aria-label="Мобильная навигация">
+      <a href="index.html" class="mobile-nav__link active">Главная</a>
+      <a href="./pages/games.html" class="mobile-nav__link">Игры</a>
+      <a href="./pages/about.html" class="mobile-nav__link">О студии</a>
+      <button class="mobile-nav__btn btn btn--primary" type="button">Связаться</button>
+    </nav>
+  </div>
     `
 }
-
-export const Header = HeaderHTML(); 
