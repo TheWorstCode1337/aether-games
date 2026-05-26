@@ -6,7 +6,11 @@ type GamesBackdropOptions = {
 
 export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
     const portalGroup = new THREE.Group();
+    const isMobile = window.innerWidth < 768;
+
+    if (!isMobile)
     scene.add(portalGroup);
+    else portalGroup.scale.set(0.8, 0.8, 0.8);
 
     const ringGeometry = new THREE.TorusGeometry(2.2, 0.08, 16, 180);
     const ringMaterial = new THREE.MeshBasicMaterial({
@@ -15,7 +19,9 @@ export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
         opacity: 0.9
     });
 
-    const ringCount = 7;
+    const starCount = isMobile ? 2000 : 7500;
+    const ringCount = isMobile ? 4 : 7;
+    const shardCount = isMobile ? 10 : 24;
 
     for (let i = 0; i < ringCount; i++) {
     const ring = new THREE.Mesh(ringGeometry, ringMaterial.clone());
@@ -50,7 +56,6 @@ export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
   });
 
   const shards: THREE.Mesh[] = [];
-  const shardCount = 24;
 
   for (let i = 0; i < shardCount; i++) {
     const shard = new THREE.Mesh(shardGeometry, shardMaterial.clone());
@@ -72,7 +77,6 @@ export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
   }
 
   const starGeometry = new THREE.BufferGeometry();
-  const starCount = 900;
   const starPositions = new Float32Array(starCount * 3);
 
   for (let i = 0; i < starCount * 3; i += 3) {
@@ -104,17 +108,24 @@ export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
     mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
   };
 
-  window.addEventListener('pointermove', onPointerMove);
+  const isTouch = 'ontouchstart' in window;
+
+  if (!isTouch) window.addEventListener('pointermove', onPointerMove);
 
   const update = (time:number) => {
+    const mouseInfluence = isMobile ? 0.15 : 0.35;
+
+    portalGroup.rotation.y = mouseX * mouseInfluence;
+    portalGroup.rotation.x = -mouseY * mouseInfluence * 0.6;
+
     portalGroup.rotation.z = time * 0.12;
-    portalGroup.rotation.y = mouseX * 0.35;
-    portalGroup.rotation.x = -mouseY * 0.2;
+
     core.scale.setScalar(1 + Math.sin(time * 3.2) * 0.08);
     for (let i = 0; i < portalGroup.children.length; i++) {
+    const rotateSpeed = isMobile ? 0.5 : 1;
       const obj = portalGroup.children[i];
       if (obj instanceof THREE.Mesh && obj !== core) {
-        obj.rotation.z += 0.002 + i * 0.0003;
+        obj.rotation.z += (0.002 + i * 0.0003) * rotateSpeed;
       }
     }
     stars.rotation.y = time * 0.01;
