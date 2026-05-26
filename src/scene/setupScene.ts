@@ -1,9 +1,15 @@
 import * as THREE from 'three';
 
-export const createScene = (canvas: HTMLCanvasElement) => {
+type SceneSetup = {
+  scene: THREE.Scene;
+  camera: THREE.PerspectiveCamera;
+  renderer: THREE.WebGLRenderer;
+};
+
+export const createScene = (canvas: HTMLCanvasElement, n:number):SceneSetup => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 35;
+    camera.position.z = n;
     
     const renderer = new THREE.WebGLRenderer({
       canvas,

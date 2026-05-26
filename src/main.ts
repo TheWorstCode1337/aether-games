@@ -1,11 +1,11 @@
 import '../scss/style.scss';
 
-import { animateMain } from './animationMain';
+import { animateMain } from './animation/animationMain';
 import { createScene } from './scene/setupScene';
 import { createParticles } from './scene/particles';
 import { startAnimation } from './scene/animation';
 import { setupResize } from './resize';
-import './startComponents';
+import './render/startComponents';
 
 
 const canvas = document.querySelector<HTMLCanvasElement>('#bg-canvas');
@@ -15,7 +15,7 @@ const {
   scene,
   camera,
   renderer
-} = createScene(canvas);
+} = createScene(canvas, 35);
 
 const particles = createParticles();
 scene.add(particles);

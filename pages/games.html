@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AETHER — Игры</title>
+</head>
+<body>
+  <div id="header"></div>
+  <canvas id="bg-canvas" class="bg-canvas"></canvas>
+  <main class="games-page">
+    <section class="games-intro">
+      <div class="games-intro__content">
+        <span class="games-intro__label">
+          Коллекция миров AETHER
+        </span>
+
+        <h1 class="games-intro__title">
+          Игры, созданные
+          с вниманием к атмосфере
+        </h1>
+
+        <p class="games-intro__description">
+          Каждая наша игра — это отдельная история,
+          визуальный стиль и настроение.
+        </p>
+      </div>
+    </section>
+
+    <section class="games-showcase">
+      <div class="games-showcase__grid" id="games-grid"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/games.ts"></script>
+</body>
+</html>
