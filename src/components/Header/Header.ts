@@ -5,9 +5,9 @@ export const Header = () => {
       <a href="index.html" class="header__logo">AETHER</a>
       
       <nav class="header__nav">
-        <a href="index.html" class="header__link">Главная</a>
-        <a href="./games.html" class="header__link">Игры</a>
-        <a href="./about.html" class="header__link">О студии</a>
+        <a href="/index.html" class="header__link">Главная</a>
+        <a href="/pages/games.html" class="header__link">Игры</a>
+        <a href="/pages/about.html" class="header__link">О студии</a>
       </nav>
 
       <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">

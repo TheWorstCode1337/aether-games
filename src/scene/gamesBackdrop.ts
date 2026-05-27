@@ -7,10 +7,9 @@ type GamesBackdropOptions = {
 export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
     const portalGroup = new THREE.Group();
     const isMobile = window.innerWidth < 768;
-
-    if (!isMobile)
     scene.add(portalGroup);
-    else portalGroup.scale.set(0.8, 0.8, 0.8);
+    if (isMobile)
+    portalGroup.scale.set(0.8, 0.8, 0.8);
 
     const ringGeometry = new THREE.TorusGeometry(2.2, 0.08, 16, 180);
     const ringMaterial = new THREE.MeshBasicMaterial({
@@ -20,8 +19,8 @@ export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
     });
 
     const starCount = isMobile ? 2000 : 7500;
-    const ringCount = isMobile ? 4 : 7;
-    const shardCount = isMobile ? 10 : 24;
+    const ringCount = isMobile ? 5 : 7;
+    const shardCount = isMobile ? 14 : 24;
 
     for (let i = 0; i < ringCount; i++) {
     const ring = new THREE.Mesh(ringGeometry, ringMaterial.clone());
@@ -108,9 +107,9 @@ export const createGamesBackdrop = ({scene}:GamesBackdropOptions) => {
     mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
   };
 
-  const isTouch = 'ontouchstart' in window;
+  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-  if (!isTouch) window.addEventListener('pointermove', onPointerMove);
+  if (!isTouchDevice) window.addEventListener('pointermove', onPointerMove);
 
   const update = (time:number) => {
     const mouseInfluence = isMobile ? 0.15 : 0.35;

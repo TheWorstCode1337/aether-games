@@ -10,6 +10,7 @@ import { setupResize } from './resize';
 import { startAnimation } from './animation/startAnimation';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#bg-canvas');
+const isMobile = window.innerWidth < 768;
 
 if (!(canvas instanceof HTMLCanvasElement)) {
   throw new Error('Canvas not found');
@@ -18,7 +19,7 @@ if (!(canvas instanceof HTMLCanvasElement)) {
 renderGames();
 animateGames();
 
-const { scene, camera, renderer } = createScene(canvas, 8);
+const { scene, camera, renderer } = createScene(canvas, (isMobile) ? 6 : 8);
 
 const backdrop = createGamesBackdrop({scene});
 

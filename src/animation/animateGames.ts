@@ -28,15 +28,4 @@ export const animateGames = ():void => {
       },
       '-=0.6'
     )
-    .from(
-      '.game-card',
-      {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: 'power3.out'
-      },
-      '-=0.4'
-    );
 };
