@@ -24,9 +24,9 @@ export const Header = () => {
 
     <div class="mobile-nav" hidden>
     <nav class="mobile-nav__menu" aria-label="Мобильная навигация">
-      <a href="index.html" class="mobile-nav__link active">Главная</a>
-      <a href="./pages/games.html" class="mobile-nav__link">Игры</a>
-      <a href="./pages/about.html" class="mobile-nav__link">О студии</a>
+      <a href="/index.html" class="mobile-nav__link active">Главная</a>
+      <a href="/pages/games.html" class="mobile-nav__link">Игры</a>
+      <a href="/pages/about.html" class="mobile-nav__link">О студии</a>
       <button class="mobile-nav__btn btn btn--primary" type="button">Связаться</button>
     </nav>
   </div>
